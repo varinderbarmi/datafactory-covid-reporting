@@ -1,5 +1,5 @@
 {
-	"name": "ds_datalake_population_by_age",
+	"name": "ds_population_by_age_to_datalake",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_data_lake_covidreporting",
