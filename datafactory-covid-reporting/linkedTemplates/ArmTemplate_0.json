@@ -165,6 +165,7 @@
 							],
 							"storeSettings": {
 								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
 								"enablePartitionDiscovery": false
 							},
 							"formatSettings": {
@@ -196,8 +197,8 @@
 									"dependsOn": [],
 									"userProperties": [],
 									"typeProperties": {
-										"message": "File doesnt exist in the population folder for ingest",
-										"errorCode": "File 404"
+										"message": "File doesnt have 13 columns",
+										"errorCode": "No 13 column error"
 									}
 								}
 							],
@@ -303,6 +304,23 @@
 									}
 								}
 							]
+						}
+					},
+					{
+						"name": "File doesnt exist",
+						"type": "Fail",
+						"dependsOn": [
+							{
+								"activity": "Check if File exists",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"message": "File doesnt exist",
+							"errorCode": "File doesnt exist"
 						}
 					}
 				],
