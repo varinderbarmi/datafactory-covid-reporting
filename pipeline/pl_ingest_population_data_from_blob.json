@@ -12,8 +12,8 @@
 						"referenceName": "ds_population_by_age_from_blob",
 						"type": "DatasetReference"
 					},
-					"timeout": "0.00:00:15",
-					"sleep": 10
+					"timeout": "0.00:00:5",
+					"sleep": 1
 				}
 			},
 			{
