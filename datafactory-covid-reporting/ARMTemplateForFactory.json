@@ -146,6 +146,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "population_by_age",
+						"folderPath": "population",
 						"fileSystem": "raw"
 					},
 					"columnDelimiter": "\t",
