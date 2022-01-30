@@ -47,6 +47,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -166,14 +167,7 @@
 									"referenceName": "ds_population_by_age_from_blob",
 									"type": "DatasetReference"
 								},
-								"logStorageSettings": {
-									"linkedServiceName": {
-										"referenceName": "ls_blob_container_covidreporting",
-										"type": "LinkedServiceReference"
-									},
-									"path": "population"
-								},
-								"enableLogging": true,
+								"enableLogging": false,
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true,
