@@ -80,6 +80,23 @@
 					"timeout": "0.00:00:15",
 					"sleep": 10
 				}
+			},
+			{
+				"name": "Failure if File not exists",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "Check if File exists",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"message": "File doesnt exist in the population folder for ingest",
+					"errorCode": "File 404"
+				}
 			}
 		],
 		"annotations": []
