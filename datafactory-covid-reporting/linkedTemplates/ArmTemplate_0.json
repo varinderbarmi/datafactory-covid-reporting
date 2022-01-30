@@ -261,6 +261,46 @@
 											"parameters": {}
 										}
 									]
+								},
+								{
+									"name": "Delete blob file after copy",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Copy Population Data from blob",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "ds_population_by_age_from_blob",
+											"type": "DatasetReference",
+											"parameters": {}
+										},
+										"logStorageSettings": {
+											"linkedServiceName": {
+												"referenceName": "ls_blob_container_covidreporting",
+												"type": "LinkedServiceReference"
+											},
+											"path": "population"
+										},
+										"enableLogging": true,
+										"storeSettings": {
+											"type": "AzureBlobStorageReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false
+										}
+									}
 								}
 							]
 						}
@@ -274,7 +314,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_population_by_age_from_blob')]",
-				"[concat(variables('factoryId'), '/datasets/ds_population_by_age_to_datalake')]"
+				"[concat(variables('factoryId'), '/datasets/ds_population_by_age_to_datalake')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_blob_container_covidreporting')]"
 			]
 		}
 	]
