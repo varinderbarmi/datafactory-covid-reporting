@@ -18,6 +18,10 @@
 		"ls_data_lake_covidreporting_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://covidreportingdatel.dfs.core.windows.net"
+		},
+		"tr_ingest_population_data_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/9511670d-1d64-4bbd-a19a-b035dbd970b3/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/storageacccovidreporting"
 		}
 	},
 	"variables": {
@@ -41,8 +45,8 @@
 								"type": "DatasetReference",
 								"parameters": {}
 							},
-							"timeout": "0.00:00:15",
-							"sleep": 10
+							"timeout": "0.00:00:05",
+							"sleep": 1
 						}
 					},
 					{
@@ -188,7 +192,7 @@
 									],
 									"policy": {
 										"timeout": "7.00:00:00",
-										"retry": 0,
+										"retry": 2,
 										"retryIntervalInSeconds": 30,
 										"secureOutput": false,
 										"secureInput": false
@@ -200,17 +204,10 @@
 											"type": "DatasetReference",
 											"parameters": {}
 										},
-										"logStorageSettings": {
-											"linkedServiceName": {
-												"referenceName": "ls_blob_container_covidreporting",
-												"type": "LinkedServiceReference"
-											},
-											"path": "population"
-										},
-										"enableLogging": true,
+										"enableLogging": false,
 										"storeSettings": {
 											"type": "AzureBlobStorageReadSettings",
-											"recursive": true,
+											"recursive": false,
 											"enablePartitionDiscovery": false
 										}
 									}
@@ -244,8 +241,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_population_by_age_from_blob')]",
-				"[concat(variables('factoryId'), '/datasets/ds_population_by_age_to_datalake')]",
-				"[concat(variables('factoryId'), '/linkedServices/ls_blob_container_covidreporting')]"
+				"[concat(variables('factoryId'), '/datasets/ds_population_by_age_to_datalake')]"
 			]
 		},
 		{
@@ -335,6 +331,36 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tr_ingest_population_data')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_ingest_population_data_from_blob",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/population/blobs/population_by_age",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('tr_ingest_population_data_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_ingest_population_data_from_blob')]"
+			]
 		}
 	]
 }
