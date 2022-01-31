@@ -1,9 +1,9 @@
 {
-	"name": "pl_ingest_cases_deaths_from_http",
+	"name": "pl_ingest_ecdc_from_http",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy cases deaths from http",
+				"name": "Copy ECDC data from http",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
