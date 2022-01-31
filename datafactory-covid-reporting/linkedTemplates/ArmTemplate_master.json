@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_data_lake_covidreporting'"
 		},
+		"ls_to_SQLserver_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_to_SQLserver'"
+		},
 		"ls_covidreporting_from_http_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://github.com/"
@@ -60,18 +64,41 @@
 					"ls_data_lake_covidreporting_accountKey": {
 						"value": "[parameters('ls_data_lake_covidreporting_accountKey')]"
 					},
+					"ls_to_SQLserver_connectionString": {
+						"value": "[parameters('ls_to_SQLserver_connectionString')]"
+					},
 					"ls_covidreporting_from_http_properties_typeProperties_url": {
 						"value": "[parameters('ls_covidreporting_from_http_properties_typeProperties_url')]"
 					},
 					"ls_data_lake_covidreporting_properties_typeProperties_url": {
 						"value": "[parameters('ls_data_lake_covidreporting_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "datafactory-covid-reporting_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					},
 					"tr_ingest_population_data_properties_typeProperties_scope": {
 						"value": "[parameters('tr_ingest_population_data_properties_typeProperties_scope')]"
 					}
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'datafactory-covid-reporting_ArmTemplate_0')]"
+			]
 		}
 	]
 }
