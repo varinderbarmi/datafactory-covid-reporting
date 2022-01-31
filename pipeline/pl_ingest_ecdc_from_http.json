@@ -111,13 +111,7 @@
 							"outputs": [
 								{
 									"referenceName": "ds_ecdcdata_raw_to_datalake",
-									"type": "DatasetReference",
-									"parameters": {
-										"finalName": {
-											"value": "@item().sinkFileName",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							]
 						}
