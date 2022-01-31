@@ -1,15 +1,10 @@
 {
 	"name": "ls_covidreporting_from_http",
 	"properties": {
-		"parameters": {
-			"sourceBaseURL": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "@{linkedService().sourceBaseURL}",
+			"url": "https://github.com/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
