@@ -11,6 +11,9 @@
 		"ls_data_lake_covidreporting_accountKey": {
 			"value": ""
 		},
+		"ls_covidreporting_from_http_properties_typeProperties_url": {
+			"value": "https://github.com/"
+		},
 		"ls_data_lake_covidreporting_properties_typeProperties_url": {
 			"value": "https://covidreportingdatel.dfs.core.windows.net"
 		},
