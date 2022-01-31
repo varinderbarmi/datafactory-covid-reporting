@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "*",
+				"fileName": "part-*",
 				"folderPath": "ecdc/hospital_admission",
 				"fileSystem": "processed"
 			},
