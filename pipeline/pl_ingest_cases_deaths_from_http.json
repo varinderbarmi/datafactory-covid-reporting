@@ -74,10 +74,12 @@
 		],
 		"variables": {
 			"relativeURL": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "cloudboxacademy/covid19/raw/main/ecdc_data/hospital_admission.csv"
 			},
 			"finalName": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "hospital_admission.csv"
 			}
 		},
 		"annotations": []
