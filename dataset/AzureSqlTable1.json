@@ -1,0 +1,53 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_to_SQLserver",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "country_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "country_code_2_digit",
+				"type": "nvarchar"
+			},
+			{
+				"name": "country_code_3_digit",
+				"type": "nvarchar"
+			},
+			{
+				"name": "country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "population",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cases_count",
+				"type": "nvarchar"
+			},
+			{
+				"name": "death_count",
+				"type": "nvarchar"
+			},
+			{
+				"name": "reported_date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "covid_reporting",
+			"table": "cases_and_deaths"
+		}
+	}
+}
