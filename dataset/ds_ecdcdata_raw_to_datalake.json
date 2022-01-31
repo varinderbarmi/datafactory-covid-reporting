@@ -1,5 +1,5 @@
 {
-	"name": "ds_cases_deaths_raw_to_datalake",
+	"name": "ds_ecdcdata_raw_to_datalake",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_data_lake_covidreporting",

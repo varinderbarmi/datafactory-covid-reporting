@@ -60,7 +60,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_cases_deaths_raw_to_datalake",
+						"referenceName": "ds_ecdcdata_raw_to_datalake",
 						"type": "DatasetReference",
 						"parameters": {
 							"finalName": {
