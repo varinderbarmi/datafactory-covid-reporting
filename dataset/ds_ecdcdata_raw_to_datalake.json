@@ -15,10 +15,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().finalName",
-					"type": "Expression"
-				},
 				"folderPath": "ecdc",
 				"fileSystem": "raw"
 			},
