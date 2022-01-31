@@ -49,17 +49,37 @@
 				"inputs": [
 					{
 						"referenceName": "ds_cases_deaths_raw_from_http",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeURL": {
+								"value": "@variables('relativeURL')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "ds_cases_deaths_raw_to_datalake",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"finalName": {
+								"value": "@variables('finalName')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"variables": {
+			"relativeURL": {
+				"type": "String"
+			},
+			"finalName": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
